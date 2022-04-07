@@ -1,0 +1,34 @@
+﻿@model API_Obj
+<form method="post" asp-action="Result">
+    <div class='border p-3 mt-4'>
+        <div class="row pb-2">
+            <hr />
+        </div>
+        @*<div asp-validation-summary="All"></div>*@
+        <div>
+         <div class="col-4">
+          <div class="mb-3">
+            <input asp-for="base_code" class="form-control col-4" placeholder="Base" />
+
+            </div>
+        </div>
+
+            </div>
+        <div class="col-4">
+             <div class="mb-3">
+                 <input asp-for="target_code" class="form-control col-4" placeholder="Target" />
+
+            </div>
+        </div>
+        <div class="col-4">
+           <input asp-for="Amount" class="form-control col-4" placeholder="Amount" />
+
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+   </div>
+
+</form>
+
+
+
+

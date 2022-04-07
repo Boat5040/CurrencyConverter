@@ -1,0 +1,71 @@
+﻿<html lang="en">
+    <head>
+        <title>
+            
+        </title>
+        <script>
+                document.addEventListener('DOMContentLoaded',function() {
+
+                    document.querySelector('form').onsubmit = function() {
+                        debugger
+
+                        fetch(`https://v6.exchangerate-api.com/v6/bd6f1088fdf3f96a63537a80/pair/${basecurrency}/${targetcurrency}/${Amount}`)
+                    .then(response => response.json())
+                    .then(data =>{
+                        console.log(data);
+                        const basecurrency = document.querySelector('#base_currency').value.toUpperCase();
+                        const targetcurrency = document.querySelector('#target_currency').value.toUpperCase();
+                        const Amount = document.querySelector('#Amount').value;
+                        debugger
+                        const rate = data.rates[currency];
+                        if(rate!== undefined){
+                            document.querySelector('#result').innerHTML= rate;
+                        }
+                        else{
+                            document.querySelector('#result').innerHTML="Invalid currency";
+                        }
+                    })
+
+                        return false;   
+                    }
+
+
+                    
+                })
+            </script>
+    </head>
+
+    <body>
+        <form>
+            <div class='border p-3 mt-4'>
+                <div class="col-4">
+                    <div class="mb-3">
+                        <input id ="base_currency" placeholder="BaseCurrency" type="text" />
+
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="mb-3">
+                        <input id ="target_currency" placeholder="TargetCurrency" type="text" />
+
+                    </div>
+                </div>
+                   <div class="col-4">
+                    <div class="mb-3">
+                        <input id ="Amount" placeholder="Amount" type="text" />
+
+                    </div>
+                </div>
+
+
+            </div>
+            <input type="submit" value="Convert" />
+            <div id="result">
+
+            </div>
+        </form>
+    </body>
+</html>
+
+
+
